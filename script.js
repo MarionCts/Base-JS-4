@@ -2,7 +2,7 @@
 
 const tableau = [1, 2, 3, 4, 5];
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < tableau.length; i++) {
     console.log(`${tableau[i]}`);
 }
 
@@ -11,30 +11,29 @@ for (let i = 0; i < 5; i++) {
 const tab = [10, 65, 78, 45];
 let somme = 0;
 
-function sommeTableau() {
-    for(let i = 0 ; i < tab.length ; i++) {
-        somme += tab[i];
+function sommeTableau(tableau) {
+    for(let i = 0 ; i < tableau.length ; i++) {
+        somme += tableau[i];
     }
+    return somme;
 }
 
-sommeTableau()
-
-console.log(`${somme}`);
+console.log(`${sommeTableau(tab)}`);
 
 // Exo 3
 
-const tableauMots = ["je", "tableau", "inconstitutionnellement"];
-let motGagnant = tableauMots[1];
+const tableauMots = ["je", "tableau", "anticonstitutionnellement"];
+let motGagnant = tableauMots[0];
 
-function motPlusLong() {
- for (let i = 0; i < tableauMots.length; i++) {
-    if (tableauMots[i].length > motGagnant.length) { // on compare la longueur du mot actuel du tableau avec la longueur du mot précédent dans le tableau
-        motGagnant = tableauMots[i];
+function motPlusLong(tableau) {
+ for (let i = 0; i < tableau.length; i++) {
+    if (tableau[i].length > motGagnant.length) { // on compare la longueur du mot actuel du tableau avec la longueur du mot précédent dans le tableau
+        motGagnant = tableau[i];
     }; 
  }
 }
 
-motPlusLong();
+motPlusLong(tableauMots);
 
 console.log(`Le mot le plus long du tableau est : ${motGagnant}.`)
 
@@ -72,16 +71,17 @@ console.log(`Il y a ${nombreVoyelles} voyelles dans le mot ${motChaine}.`);
 const tableauPairs = [5, 4, 6, 78, 95, 59, 41, 12, 15, 32];
 let tableauFinal = [];
 
-function nombrePairs() {
-    for (let i = 0 ; i < tableauPairs.length ; i++) {
-        if (tableauPairs[i] % 2 === 0) {
-            tableauFinal.push(tableauPairs[i]);
+function nombrePairs(tableau) {
+    for (let i = 0 ; i < tableau.length ; i++) {
+        if (tableau[i] % 2 === 0) {
+            tableauFinal.push(tableau[i]);
         }
     }
+    return tableauFinal;
 }
 
-nombrePairs();
-console.log(tableauFinal);
+
+console.log(nombrePairs(tableauPairs));
 
 // Exo 7
 
@@ -91,21 +91,13 @@ const aliments = {
     viande: "poulet"
 };
 
-let compteur = 0;
-
-// function compterProprietes() {
-//     return Object.keys(aliments).length;
-// }
+const compteur = [];
 
 function compterProprietes() {
-    for (let cle in aliments) {
-        compteur++;
-    }
+    return Object.keys(aliments).length;
 }
 
-compterProprietes();
-
-console.log(compteur);
+console.log(compterProprietes(aliments));
 
 // Exo 8
 
@@ -118,7 +110,7 @@ let produits = [
 ];
 
 function extraireNoms (tableau) {
-    for (objet of produits) {
+    for (let objet of tableau) {
         produitsFinis.push(objet.nom);
         
     }
